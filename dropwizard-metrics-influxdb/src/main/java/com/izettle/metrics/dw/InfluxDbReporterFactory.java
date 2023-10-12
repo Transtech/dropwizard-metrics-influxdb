@@ -8,8 +8,9 @@ import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
 import javax.activation.UnsupportedDataTypeException;
-import javax.validation.constraints.NotNull;
 
+import io.dropwizard.metrics.common.BaseReporterFactory;
+import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 
@@ -28,7 +29,6 @@ import com.izettle.metrics.influxdb.InfluxDbTcpSender;
 import com.izettle.metrics.influxdb.InfluxDbUdpSender;
 import com.izettle.metrics.dw.tags.ClassBasedTransformer;
 import com.izettle.metrics.dw.tags.Transformer;
-import io.dropwizard.metrics.BaseReporterFactory;
 import io.dropwizard.util.Duration;
 import io.dropwizard.validation.ValidationMethod;
 
