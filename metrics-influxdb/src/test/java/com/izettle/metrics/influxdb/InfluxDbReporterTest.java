@@ -27,6 +27,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -45,12 +46,13 @@ public class InfluxDbReporterTest {
     private MetricRegistry registry;
     private InfluxDbReporter reporter;
     private Map<String, String> globalTags;
+    private AutoCloseable openedMocks;
 
     @Before
     public void init() {
         globalTags = new HashMap<>();
         globalTags.put("global", "tag001");
-        MockitoAnnotations.initMocks(this);
+        openedMocks = MockitoAnnotations.openMocks(this);
         reporter = InfluxDbReporter
             .forRegistry(registry)
             .convertRatesTo(TimeUnit.SECONDS)
@@ -59,6 +61,13 @@ public class InfluxDbReporterTest {
             .withTags(globalTags)
             .build(influxDb);
 
+    }
+
+    @After
+    public void cleanup() throws Exception {
+        if (openedMocks != null) {
+            openedMocks.close();
+        }
     }
 
     @Test

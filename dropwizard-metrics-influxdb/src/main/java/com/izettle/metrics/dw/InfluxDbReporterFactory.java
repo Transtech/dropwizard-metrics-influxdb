@@ -10,8 +10,8 @@ import java.util.regex.PatternSyntaxException;
 import javax.activation.UnsupportedDataTypeException;
 
 import io.dropwizard.metrics.common.BaseReporterFactory;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 
 import com.codahale.metrics.MetricRegistry;

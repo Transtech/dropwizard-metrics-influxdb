@@ -1,5 +1,6 @@
 package com.izettle.metrics.influxdb;
 
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.codec.Charsets;
@@ -16,7 +17,7 @@ public class InfluxDbLoggerSender extends InfluxDbBaseSender {
 
     @Override
     protected int writeData(byte[] line) throws Exception {
-        logger.info(new String(line, Charsets.UTF_8));
+        logger.info(new String(line, StandardCharsets.UTF_8));
         return 0;
     }
 }
